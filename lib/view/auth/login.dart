@@ -5,110 +5,93 @@ import 'package:flutter/material.dart';
 import '../../common/messages.dart';
 
 // view module
-import '../dice/dice.dart';
+//import '../dice/dice.dart';
 
-class Login extends StatefulWidget {
-  Login({Key? key}) : super(key: key);
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  TextEditingController userID = TextEditingController();
-  TextEditingController userPW = TextEditingController();
-
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Log in'),
-          backgroundColor: Colors.redAccent,
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-          ),
-          actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.search))
-          ]),
-      body: Builder(builder: (context) {
-        return GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: SingleChildScrollView(
-            child: Column(children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(40.0),
-              ),
-              Center(
-                child: Image.network(
-                  'https://i1.daumcdn.net/thumb/C276x260/?fname=https://blog.kakaocdn.net/dn/dX92Yv/btqNXGNhm1J/RgFXeMHHWayIlyjYygoJo0/img.png',
-                  width: 150.0,
-                  height: 150.0,
-                ),
-              ),
-              Form(
-                  child: Theme(
-                data: ThemeData(
-                    primaryColor: Colors.teal,
-                    inputDecorationTheme: InputDecorationTheme(
-                        labelStyle:
-                            TextStyle(color: Colors.teal, fontSize: 15.0))),
-                child: Column(
+        backgroundColor: Colors.blue,
+        title: Text(
+          'Sign In',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        elevation: 0.2,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 10.0,
+            ),
+            ButtonTheme(
+              height: 50.0,
+              child: RaisedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    TextField(
-                      controller: userID,
-                      decoration: InputDecoration(labelText: 'ID'),
-                      keyboardType: TextInputType.emailAddress,
+                    Image.asset('image/flogo.png'),
+                    Text(
+                      'Login with Facebook',
+                      style: TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
-                    TextField(
-                      controller: userPW,
-                      decoration: InputDecoration(labelText: 'Password'),
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                    ),
-                    SizedBox(
-                      height: 40.0,
-                    ),
-                    ButtonTheme(
-                      minWidth: 100.0,
-                      height: 50.0,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.orangeAccent),
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 35.0,
-                          ),
-                          onPressed: () {
-                            if (userID.text == 'dice' &&
-                                userPW.text == '1234') {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Dice()));
-                            } else if (userID.text == 'dice' &&
-                                userPW.text != '1234') {
-                              showErrorMessage(context);
-                            } else if (userID.text != 'dice' &&
-                                userPW.text == '1234') {
-                              showErrorMessage(context);
-                            } else {
-                              showErrorMessage(context);
-                            }
-                          }),
+                    Opacity(
+                      opacity: 0.0,
+                      child: Image.asset('image/glogo.png'),
                     ),
                   ],
                 ),
-              ))
-            ]),
-          ),
-        );
-      }),
+                color: Color(0xFF334D92),
+                onPressed: () {},
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(4.0),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            ButtonTheme(
+              height: 50.0,
+              child: RaisedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      Icons.mail,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Login with Email',
+                      style: TextStyle(color: Colors.white, fontSize: 15.0),
+                    ),
+                    Opacity(
+                      opacity: 0.0,
+                      child: Icon(
+                        Icons.mail,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                color: Colors.green,
+                onPressed: () {},
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(4.0),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

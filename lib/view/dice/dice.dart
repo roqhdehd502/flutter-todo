@@ -2,24 +2,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-// common module
-import 'package:fluttertoast/fluttertoast.dart';
-
 class Dice extends StatefulWidget {
-  const Dice({Key? key}) : super(key: key);
-
   @override
-  State<Dice> createState() => _DiceState();
+  _DiceState createState() => _DiceState();
 }
 
 class _DiceState extends State<Dice> {
   int leftDice = 1;
   int rightDice = 1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
         title: Text('Dice game'),
@@ -29,18 +23,14 @@ class _DiceState extends State<Dice> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: EdgeInsets.all(32.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Expanded(child: Image.asset('image/dice$leftDice.png')),
                   SizedBox(
                     width: 20.0,
                   ),
-                  Expanded(
-                      child: Image.asset(
-                    'image/dice$rightDice.png',
-                  )),
+                  Expanded(child: Image.asset('image/dice$rightDice.png')),
                 ],
               ),
             ),
@@ -51,32 +41,22 @@ class _DiceState extends State<Dice> {
               minWidth: 100.0,
               height: 60.0,
               child: RaisedButton(
-                child: Icon(
-                  Icons.play_arrow,
-                  color: Colors.white,
-                  size: 50.0,
-                ),
-                onPressed: () {
-                  setState(() {
-                    leftDice = Random().nextInt(6) + 1;
-                    rightDice = Random().nextInt(6) + 1;
-                  });
-                  showToast("Left dice: {$leftDice}, Right dice: {$rightDice}");
-                },
-                color: Colors.orangeAccent,
-              ),
+                  child: Icon(
+                    Icons.play_arrow,
+                    color: Colors.white,
+                    size: 50.0,
+                  ),
+                  color: Colors.orangeAccent,
+                  onPressed: () {
+                    setState(() {
+                      leftDice = Random().nextInt(6) + 1;
+                      rightDice = Random().nextInt(6) + 1;
+                    });
+                  }),
             )
           ],
         ),
       ),
     );
   }
-}
-
-void showToast(String message) {
-  Fluttertoast.showToast(
-      msg: message,
-      backgroundColor: Colors.redAccent,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM);
 }

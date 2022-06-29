@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Dice game',
+      title: 'Login app',
+      theme: ThemeData(primarySwatch: Colors.grey),
       home: Login(),
     );
   }
