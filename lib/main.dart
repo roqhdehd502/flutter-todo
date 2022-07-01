@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // view module
-import 'view/auth/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +13,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login app',
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: Login(),
-    );
+        home: Scaffold(
+            appBar: AppBar(leading: Text('Sample'), actions: [
+              Icon(Icons.star),
+            ]),
+            body: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Image.asset(
+                    '',
+                    width: 150,
+                  ),
+                  SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('상품설명'),
+                        Text('상품설명'),
+                        Text('상품설명'),
+                        Text('상품설명'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )));
   }
 }
